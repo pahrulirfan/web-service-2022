@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Tugas Kedua
+
 Route::get('/', function () {
     return view('welcome');
 });
