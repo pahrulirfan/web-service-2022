@@ -26,6 +26,7 @@
                     <form action="{{ route('delete.dosen', $row->id) }}" method="post">
                         @csrf
                         @method('DELETE')
+                        {{-- tombol hapus --}}
                         <button type="submit"
                                 class="btn btn-danger btn-sm"
                                 onclick="return confirm('Anda Yakin ?')"
