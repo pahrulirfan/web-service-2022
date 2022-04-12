@@ -18,4 +18,22 @@ class DosenController extends Controller
     {
         return view('dosen/add');
     }
+
+    public function store(Request $request)
+    {
+//        dd($request->all());
+        $this->validate($request, [
+            'nik' => 'required|unique:dosen',
+            'nama_dosen' => 'required|min:10',
+            'umur' => 'required|numeric',
+        ]);
+        Dosen::create($request->all());
+        return redirect(url('data-dosen'));
+    }
+
+    public function destroy(Dosen $id)
+    {
+        $id->delete();
+        return redirect(url('data-dosen'));
+    }
 }

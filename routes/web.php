@@ -28,7 +28,9 @@ Route::view('master', 'template/master');
 
 // route untuk dosen
 Route::get('data-dosen', [DosenController::class, 'index']);
-Route::get('add-dosen', [DosenController::class, 'create']);
+Route::get('add-dosen', [DosenController::class, 'create'])->name('create.dosen');
+Route::post('save-dosen', [DosenController::class, 'store'])->name('save.dosen');
+Route::delete('delete-dosen/{id}', [DosenController::class, 'destroy'])->name('delete.dosen');
 
 
 

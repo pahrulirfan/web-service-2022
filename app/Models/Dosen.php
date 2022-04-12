@@ -10,4 +10,8 @@ class Dosen extends Model
     use HasFactory;
 
     protected $table = 'dosen';
+
+//    public $timestamps = false;
+
+    protected $fillable = ['nik', 'nama_dosen', 'umur'];
 }
