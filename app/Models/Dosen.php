@@ -18,7 +18,7 @@ class Dosen extends Model
     protected $primaryKey = 'id';
 
     // pilihan jika tidak ingin menyimpan timestamp pembuatan
-    public $timestamps = true
+    public $timestamps = true;
 
     protected $fillable = ['nik', 'nama_dosen', 'umur'];
 }
