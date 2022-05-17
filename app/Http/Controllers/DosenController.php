@@ -21,7 +21,6 @@ class DosenController extends Controller
 
     public function store(Request $request)
     {
-//        dd($request->all());
         $this->validate($request, [
             'nik' => 'required|unique:dosen',
             'nama_dosen' => 'required|min:10',
@@ -34,6 +33,22 @@ class DosenController extends Controller
     public function destroy(Dosen $id)
     {
         $id->delete();
+        return redirect(url('data-dosen'));
+    }
+
+    public function edit(Dosen $dosen)
+    {
+        return view('dosen.edit', compact('dosen'));
+    }
+
+    public function update(Request $request, Dosen $dosen)
+    {
+        $this->validate($request, [
+            'nik' => 'required|unique:dosen,nik,' . $dosen->id,
+            'nama_dosen' => 'required|min:10',
+            'umur' => 'required|numeric',
+        ]);
+        $dosen->update($request->all());
         return redirect(url('data-dosen'));
     }
 }

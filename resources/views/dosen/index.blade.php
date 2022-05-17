@@ -31,6 +31,7 @@
                                 class="btn btn-danger btn-sm"
                                 onclick="return confirm('Anda Yakin ?')"
                         >Hapus</button>
+                        <a href="{{ route('edit.dosen', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     </form>
                 </td>
             </tr>
