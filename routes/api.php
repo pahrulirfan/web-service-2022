@@ -19,5 +19,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('v1/customers', [CustomerController::class, 'index']);
-Route::get('v1/customer/{id}', [CustomerController::class, 'show']);
+Route::group(['prefix'=> 'v1'], function(){
+
+    Route::get('customers', [CustomerController::class, 'index']);
+    Route::get('customer/{id}', [CustomerController::class, 'show']);
+    Route::post('customer', [CustomerController::class, 'store']);
+    Route::patch('customer/{id}', [CustomerController::class, 'update']);
+    Route::delete('customer/{id}', [CustomerController::class, 'delete']);
+
+});
+
+Route::group(['prefix'=> 'v2/admin/'], function(){
+
+    Route::get('customers', [CustomerController::class, 'index']);
+    Route::get('customer/{id}', [CustomerController::class, 'show']);
+    Route::post('customer', [CustomerController::class, 'store']);
+    Route::patch('customer/{id}', [CustomerController::class, 'update']);
+    Route::delete('customer/{id}', [CustomerController::class, 'delete']);
+
+});
