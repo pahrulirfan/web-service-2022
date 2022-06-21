@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix'=> 'v1'], function(){
+Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
 
     Route::get('customers', [CustomerController::class, 'index']);
     Route::get('customer/{id}', [CustomerController::class, 'show']);
@@ -30,4 +30,11 @@ Route::group(['prefix'=> 'v1'], function(){
     Route::get('products', [\App\Http\Controllers\ProductController::class, 'index']);
     Route::get('categories', [\App\Http\Controllers\CategoryController::class, 'index']);
 
+});
+
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
+    Route::post('login', [\App\Http\Controllers\API\AuthController::class, 'login']);
+    Route::post('logout', [\App\Http\Controllers\API\AuthController::class, 'logout']);
+    Route::post('refresh', [\App\Http\Controllers\API\AuthController::class, 'refresh']);
+    Route::post('me', [\App\Http\Controllers\API\AuthController::class, 'me']);
 });
