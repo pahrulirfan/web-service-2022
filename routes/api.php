@@ -27,14 +27,7 @@ Route::group(['prefix'=> 'v1'], function(){
     Route::patch('customer/{id}', [CustomerController::class, 'update']);
     Route::delete('customer/{id}', [CustomerController::class, 'delete']);
 
-});
-
-Route::group(['prefix'=> 'v2/admin/'], function(){
-
-    Route::get('customers', [CustomerController::class, 'index']);
-    Route::get('customer/{id}', [CustomerController::class, 'show']);
-    Route::post('customer', [CustomerController::class, 'store']);
-    Route::patch('customer/{id}', [CustomerController::class, 'update']);
-    Route::delete('customer/{id}', [CustomerController::class, 'delete']);
+    Route::get('products', [\App\Http\Controllers\ProductController::class, 'index']);
+    Route::get('categories', [\App\Http\Controllers\CategoryController::class, 'index']);
 
 });
